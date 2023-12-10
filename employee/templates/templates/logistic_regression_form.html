@@ -1,0 +1,7 @@
+<!-- templates/logistic_regression_form.html -->
+
+<form method="post" action="{% url 'logistic_regression_predict' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Predict</button>
+</form>

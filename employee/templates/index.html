@@ -1,0 +1,40 @@
+{% load static %}
+
+{% include 'header.html' %}  <!--first page . index page vitra header page aauxa-->
+
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static '1.gif' %}" alt="Los Angeles" width="100%" height="700">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'OIP.jpg' %}" alt="Chicago" width="100%" height="700">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'bg.jpg' %}" alt="New York" width="100%" height="700">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+<div class="container-fluid bg-dark" style="height:150px">
+  <h4 class="text-center text-white mt-5">Employee Management System</h4>
+  <p class="text-center text-primary">&copy; Neha Sharma</p>
+</div>

@@ -1,0 +1,76 @@
+{% include 'header.html' %}
+
+<Script>
+    function checkpassword(){
+    if(document.signup.pwd.value!=document.signup.cpwd.value){
+    alert('password and repeat password field does not match');
+    document.signup.cpwd.focus();
+    return false;
+    }
+    return true;
+    }
+</Script>
+
+<div class="card shadow m-5">
+    <div class="Create an Account">
+        <h5 class="p-2 text-danger" style="border-bottom : 2px solid blue">Create an Account</h5>
+        <div class="container-fluid">
+            <form method="post" name="signup" onsubmit="return checkpassword()">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="firstname" class="form-control" placeholder="Enter First Name" pattern="[A-Za-z]+" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="lastname" class="form-control" placeholder="Enter Last Name" pattern="[A-Za-z]+" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Employee Code</label>
+                            <input type="text" name="empcode" class="form-control" placeholder="Enter Your Employee Code" pattern="[0-9]+" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Email ID</label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter Your Email Id" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="pwd" class="form-control" placeholder="Enter Your Password" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label> Confirm Password</label>
+                            <input type="password" name="cpwd" class="form-control" placeholder="Enter Your Password Again" required>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<Script>
+    alert('Signup Successful');
+    window.location = ('{% url 'emp_login' %}');
+</Script>
+{% endif %}
+{% if error == "yes" %}
+<Script>
+    alert('Something went wrong , Try Again...');
+</Script>
+{% endif %}

@@ -1,0 +1,62 @@
+{% extends 'admin_base.html' %} <!-- base page ma khulxa-->
+
+{% block main %}
+<div class="card shadow m-2">
+    <div class="Create an Account">
+        <h5 class="p-2 text-danger" style="border-bottom : 2px solid blue">Employee Details</h5>
+        <div class="container-fluid">
+            <table class="table table-bordered table-hover" id="example">
+                <thead class="text-light bg-danger">
+                <tr>
+                    <th>S NO.</th>
+                    <th>Emp_Code</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email ID</th>
+                    <th>Contact No.</th>
+                    <th>Joining Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in employee %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.empcode}}</td>
+                    <td>{{i.user.first_name}}</td>
+                    <td>{{i.user.last_name}}</td>
+                    <td>{{i.user.username}}</td>
+                    <td>{{i.contact}}</td>
+                    <td>{{i.joiningdate}}</td>
+                    <td>
+                        <a href="{% url 'edit_education' i.user.id %}" class="text-success">Edit Education</a><br>
+                        <a href="{% url 'edit_experience' i.user.id %}" class="text-primary">Edit Experience</a><br></td>
+                </tr>
+                 {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<Script>
+    alert('Password is Updated Successfully');
+    window.location = ('{% url 'logout' %}');
+</Script>
+{% endif %}
+{% if error == "yes" %}
+<Script>
+    alert('Something went wrong , Try Again...');
+</Script>
+{% endif %}
+
+
+{% if error == "not" %}
+<Script>
+    alert('Your current password is wrong');
+</Script>
+{% endif %}
+
+{% endblock %}

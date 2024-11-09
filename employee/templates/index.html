@@ -1,0 +1,155 @@
+{% load static %}
+
+{% include 'header.html' %}
+
+<div class="container mt-5">
+  <h1 class="text-center font-weight-bold text-primary animated fadeIn">Welcome to StaffSphere</h1>
+  <p class="text-center text-muted animated fadeIn">Your go-to platform for streamlined employee management.</p>
+  
+  <div class="text-center mt-4">
+    <a href="{% url 'emp_login' %}" class="btn btn-primary mx-2 btn-lg">Employee Login</a>
+    <a href="{% url 'registration' %}" class="btn btn-success mx-2 btn-lg">Employee Signup</a>
+    <a href="{% url 'admin_login' %}" class="btn btn-info mx-2 btn-lg">Admin Login</a>
+  </div>
+  
+  <div class="mt-5">
+    <h2 class="text-center font-weight-bold text-secondary animated fadeIn">About Us</h2>
+    <p class="text-center animated fadeIn">At StaffSphere, we enhance the employee management experience. Our platform provides seamless access to essential tools and resources, promoting collaboration and efficiency for organizations of all sizes.</p>
+  </div>
+  
+  <div class="mt-5">
+    <h3 class="text-center font-weight-bold text-success animated fadeIn">Our Locations</h3>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">📍 Biratnagar</li>
+      <li class="list-group-item">📍 Kathmandu</li>
+      <li class="list-group-item">📍 Ithari</li>
+      <li class="list-group-item">📍 Birtamode</li>
+    </ul>
+  </div>
+
+  <div class="mt-5">
+    <h3 class="text-center font-weight-bold text-warning animated fadeIn">Frequently Asked Questions (FAQ)</h3>
+    <div class="accordion" id="faqAccordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              What is StaffSphere?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+          <div class="card-body">
+            StaffSphere streamlines employee management processes for organizations.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              How can I sign up?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+          <div class="card-body">
+            Click the "Employee Signup" button and fill out the registration form.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Who can use StaffSphere?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+          <div class="card-body">
+            StaffSphere is designed for both employees and administrators.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-dark text-center text-white py-4 mt-5">
+  <h4 class="font-weight-bold">StaffSphere</h4>
+  <p class="text-primary">&copy; {{ current_year }} StaffSphere. All rights reserved.</p>
+  <p>📞 Phone: (123) 456-7890 | 📧 Email: info@staffsphere.com</p>
+</div>
+
+<!-- Custom CSS -->
+<style>
+  /* General page styling */
+  body {
+      background-color: #f0f4f8; /* Soft background color */
+      font-family: 'Roboto', sans-serif; /* Clean font */
+  }
+
+  h1, h2, h3 {
+      letter-spacing: 1px; /* Space between letters */
+      margin-bottom: 20px; /* Spacing below headings */
+  }
+
+  p {
+      font-size: 1.2rem; /* Larger font size for clarity */
+      line-height: 1.6; /* Improved line spacing */
+  }
+
+  .btn {
+      transition: background-color 0.3s ease; /* Smooth button hover effect */
+      padding: 10px 20px; /* Larger padding for buttons */
+      font-size: 1.1rem; /* Slightly larger font for buttons */
+      border-radius: 5px; /* Rounded corners for buttons */
+  }
+
+  .btn:hover {
+      background-color: #0056b3; /* Darker shade on hover */
+      transform: scale(1.05); /* Slightly enlarge button on hover */
+  }
+
+  /* List group styling */
+  .list-group-item {
+      font-size: 1.1rem; /* Slightly larger font for list items */
+      background-color: #ffffff; /* White background for items */
+      border: 1px solid #e0e0e0; /* Light border */
+      transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+
+  .list-group-item:hover {
+      background-color: #f1f1f1; /* Light gray on hover */
+  }
+
+  /* Fade-in animation */
+  .animated {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s forwards; /* Longer duration for a smoother effect */
+  }
+
+  @keyframes fadeIn {
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+      h1 {
+          font-size: 2rem; /* Adjust heading size on small screens */
+      }
+
+      h2, h3 {
+          font-size: 1.5rem; /* Adjust About Us and Locations heading size */
+      }
+
+      p {
+          font-size: 1rem; /* Adjust paragraph size on small screens */
+      }
+  }
+</style>

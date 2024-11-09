@@ -1,0 +1,81 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background for contrast */
+        }
+        .sidebar {
+            background-color: #343a40; /* Dark sidebar */
+            min-height: 100vh; /* Full height */
+        }
+        .sidebar .list-group-item {
+            background-color: transparent; /* Transparent background */
+            color: white; /* White text */
+        }
+        .sidebar .list-group-item:hover {
+            background-color: #495057; /* Darker on hover */
+        }
+        .sidebar .list-group-item.active {
+            background-color: #007bff; /* Active item color */
+            color: white; /* White text */
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Circular profile image */
+        }
+        .main-content {
+            padding: 20px; /* Padding for content */
+        }
+        .header-title {
+            border-bottom: 2px solid blue; /* Top border */
+            border-top: 2px solid blue; /* Bottom border */
+            padding: 10px 0; /* Vertical padding */
+        }
+        .card {
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 p-0 sidebar">
+            <center>
+                <img src="{% static 'OIP.jpg' %}" class="profile-img my-3">
+            </center>
+            <div class="list-group">
+                <a href="{% url 'emp_home' %}" class="list-group-item list-group-item-action {% if request.path == '/emp_home' %} active {% endif %}">Dashboard</a>
+                <a href="{% url 'profile' %}" class="list-group-item list-group-item-action {% if request.path == '/profile' %} active {% endif %}">Profile</a>
+                <a href="{% url 'my_experience' %}" class="list-group-item list-group-item-action {% if request.path == '/my_experience' %} active {% endif %}">My Experience</a>
+                <a href="{% url 'edit_myexperience' %}" class="list-group-item list-group-item-action {% if request.path == '/edit_myexperience' %} active {% endif %}">Edit My Experience</a>
+                <a href="{% url 'my_education' %}" class="list-group-item list-group-item-action {% if request.path == '/my_education' %} active {% endif %}">My Education</a>
+                <a href="{% url 'edit_myeducation' %}" class="list-group-item list-group-item-action {% if request.path == '/edit_myeducation' %} active {% endif %}">Edit My Education</a>
+                <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action {% if request.path == '/change_password' %} active {% endif %}">Change Password</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action">Logout</a>
+            </div>
+        </div>
+        <div class="col-sm-10 p-0">
+            <div class="main-content">
+                <h5 class="text-center header-title">Staff Sphere</h5>
+                <div class="card">
+                    <div class="card-body">
+                        {% block main %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

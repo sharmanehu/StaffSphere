@@ -1,0 +1,62 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header text-center bg-primary text-white">
+            <h5 class="m-0">Employee Login</h5>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="emailid">Email ID</label>
+                    <input type="email" name="emailid" class="form-control" id="emailid" placeholder="Enter Email-ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('Logged in Successfully');
+    window.location = ('{% url 'emp_home' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Invalid Login, Try Again...');
+</script>
+{% endif %}
+
+<!-- Custom CSS -->
+<style>
+    .card {
+        border-radius: 15px; /* Rounded corners for the card */
+    }
+
+    .card-header {
+        border-top-left-radius: 15px; /* Round top left */
+        border-top-right-radius: 15px; /* Round top right */
+    }
+
+    .btn {
+        transition: background-color 0.3s ease; /* Smooth button hover effect */
+    }
+
+    .btn:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .card {
+            margin: 20px; /* Margin for small screens */
+        }
+    }
+</style>

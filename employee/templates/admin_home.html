@@ -1,0 +1,84 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+<h4 class="text-danger p-2" style="border-bottom: 2px solid purple; font-size: 1.8rem;">Admin Dashboard</h4>
+
+<div class="row text-center my-4">
+    <div class="col-sm-12 col-md-6 offset-md-3 p-2">
+        <div class="card shadow-lg border-0">
+            <div class="card-body">
+                <h4 class="text-success mb-3" style="font-weight: bold;">Welcome Back to ERMS</h4>
+                <h5 class="text-capitalize mb-4" style="color: #6c757d;">Admin</h5>
+                <div class="chart-container" style="position: relative; height:300px; width:100%;">
+                    <canvas id="experienceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('experienceChart').getContext('2d');
+    const experienceChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ experience_labels|safe }},
+            datasets: [{
+                label: 'Number of Employees by Experience',
+                data: {{ experience_counts|safe }},
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 205, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#6c757d',
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#6c757d',
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: '#333',
+                        font: {
+                            size: 16
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

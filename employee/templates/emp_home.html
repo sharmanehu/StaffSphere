@@ -1,0 +1,26 @@
+{% extends 'emp_base.html' %}
+<!-- Home page base page vitra aauxa -->
+{% block main %}
+
+<div class="container mt-5">
+    <h4 class="text-danger text-center p-3" style="border-bottom: 2px solid purple; font-weight: bold;">Employee Dashboard</h4>
+    
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 p-4">
+            <div class="card shadow" style="border-radius: 20px; background-color: #f8f9fa;">
+                <div class="card-body text-center">
+                    <h4 class="text-success" style="font-weight: bold; font-size: 1.8rem;">Welcome Back to Staff Fusion</h4>
+                    <h5 class="text-capitalize" style="font-weight: normal; font-size: 1.5rem;">{{ request.user.first_name }} {{ request.user.last_name }}</h5>
+                    <p class="mt-4" style="font-size: 1.1rem; color: #666;">We're thrilled to have you back! Manage your tasks and make the most of your experience.</p>
+                    
+                    <div class="mt-4">
+                        <a href="{% url 'profile' %}" class="btn btn-primary btn-lg mx-2">View Profile</a>
+                        <a href="{% url 'my_experience' %}" class="btn btn-outline-success btn-lg mx-2">My Experience</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

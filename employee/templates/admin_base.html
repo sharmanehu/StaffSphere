@@ -1,0 +1,136 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+        }
+        .list-group-item {
+            padding: 12px !important;
+            font-size: 15px;
+        }
+        .list-group-item.active {
+            background-color: #17a2b8 !important;
+            border-color: #17a2b8 !important;
+        }
+        h5 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            border-top: 2px solid #007bff;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-custom {
+            background-color: #17a2b8;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            transition: all 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #138496;
+            color: #fff;
+        }
+        #example {
+            font-size: 0.9em;
+        }
+        .img-thumbnail {
+            border: 2px solid #007bff;
+        }
+        .list-group-item-warning {
+            background-color: #ffc107;
+            color: #333;
+        }
+        @media only screen and (max-width: 768px) {
+            .list-group-item {
+                font-size: 14px;
+            }
+            h5 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-sm-2 p-0 bg-light">
+            <center>
+                <img src="{% static 'bg.jpg' %}" width="100" height="100" class="img-thumbnail rounded-circle my-3" alt="Profile Image">
+            </center>
+            <div class="list-group">
+                <a href="{% url 'admin_home' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/admin_home' %} active {% endif %}" aria-label="Dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="{% url 'all_employee' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/all_employee' %} active {% endif %}" aria-label="All Employees">
+                    <i class="fas fa-users"></i> All Employees
+                </a>
+                <a href="{% url 'change_passwordadmin' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/change_passwordadmin' %} active {% endif %}" aria-label="Change Password">
+                    <i class="fas fa-key"></i> Change Password
+                </a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-warning list-group-item-action" aria-label="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="col-sm-10 p-0">
+            <div class="container-fluid p-4">
+                <h5 class="text-center p-3 font-weight-bold">StaffSphere</h5>
+                <div class="card shadow-sm p-3">
+                    <div class="card-body">
+                        {% block main %}
+                        <!-- Your main content here -->
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+            ]
+        });
+    });
+</script>
+
+</body>
+</html>
